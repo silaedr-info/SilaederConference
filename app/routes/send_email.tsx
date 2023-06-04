@@ -1,7 +1,6 @@
-import {Button, Box, rem, Tooltip, TextInput, Group} from '@mantine/core';
+import {Button, Box, TextInput, Group} from '@mantine/core';
 import {useForm} from '@mantine/form';
 import emailjs from '@emailjs/browser';
-import {useEffect} from "react";
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
 
