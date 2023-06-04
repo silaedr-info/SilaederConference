@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  onlyoffice:
+    image: onlyoffice/documentserver
+    volumes:
+      - "path:/var/log/onlyoffice"
+      - "path:/var/www/onlyoffice/Data"
+      - "path:/var/lib/onlyoffice"
+      - "path:/var/lib/postgresql"
+    ports:
+      - 8080:80
+    restart: always
