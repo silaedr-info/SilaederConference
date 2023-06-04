@@ -19,6 +19,9 @@ dependencies:
   '@mantine/remix':
     specifier: ^6.0.13
     version: 6.0.13(@emotion/react@11.11.0)(@emotion/server@11.11.0)(@mantine/core@6.0.13)(@mantine/hooks@6.0.13)(react-dom@18.2.0)(react@18.2.0)
+  '@prisma/client':
+    specifier: 4.15.0
+    version: 4.15.0(prisma@4.15.0)
   '@remix-run/css-bundle':
     specifier: ^1.16.1
     version: 1.16.1(@remix-run/serve@1.16.1)
@@ -34,6 +37,9 @@ dependencies:
   isbot:
     specifier: ^3.6.8
     version: 3.6.10
+  prisma:
+    specifier: ^4.15.0
+    version: 4.15.0
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -1875,6 +1881,29 @@ packages:
       picocolors: 1.0.0
       tslib: 2.5.2
     dev: true
+
+  /@prisma/client@4.15.0(prisma@4.15.0):
+    resolution: {integrity: sha512-xnROvyABcGiwqRNdrObHVZkD9EjkJYHOmVdlKy1yGgI+XOzvMzJ4tRg3dz1pUlsyhKxXGCnjIQjWW+2ur+YXuw==}
+    engines: {node: '>=14.17'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      '@prisma/engines-version': 4.15.0-28.8fbc245156db7124f997f4cecdd8d1219e360944
+      prisma: 4.15.0
+    dev: false
+
+  /@prisma/engines-version@4.15.0-28.8fbc245156db7124f997f4cecdd8d1219e360944:
+    resolution: {integrity: sha512-sVOig4tjGxxlYaFcXgE71f/rtFhzyYrfyfNFUsxCIEJyVKU9rdOWIlIwQ2NQ7PntvGnn+x0XuFo4OC1jvPJKzg==}
+    dev: false
+
+  /@prisma/engines@4.15.0:
+    resolution: {integrity: sha512-FTaOCGs0LL0OW68juZlGxFtYviZa4xdQj/rQEdat2txw0s3Vu/saAPKjNVXfIgUsGXmQ72HPgNr6935/P8FNAA==}
+    requiresBuild: true
+    dev: false
 
   /@radix-ui/number@1.0.0:
     resolution: {integrity: sha512-Ofwh/1HX69ZfJRiRBMTy7rgjAzHmwe4kW9C9Y99HTRUcYLUuVT0KESFj15rPjRgKJs20GPq8Bm5aEDJ8DuA3vA==}
@@ -6201,6 +6230,15 @@ packages:
       react: '>=0.14.9'
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /prisma@4.15.0:
+    resolution: {integrity: sha512-iKZZpobPl48gTcSZVawLMQ3lEy6BnXwtoMj7hluoGFYu2kQ6F9LBuBrUyF95zRVnNo8/3KzLXJXJ5TEnLSJFiA==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': 4.15.0
     dev: false
 
   /process-nextick-args@2.0.1:
