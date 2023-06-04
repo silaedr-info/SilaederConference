@@ -1,0 +1,100 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int    @id @default(autoincrement())
+  name          String
+  email         String
+  password_hash String
+  grade         Int
+
+  project   Project[]
+  Privelege Privelege[]
+}
+
+model Privelege {
+  user User @relation(fields: [id], references: [id])
+  id   Int  @unique
+
+  is_organisator       Boolean
+  is_student           Boolean
+  is_technical_support Boolean
+}
+
+model Project {
+  id Int @id @default(autoincrement())
+
+  name            String
+  description     String
+  tutor           String
+  participants    String
+  section         String
+  time_for_speech Int     @default(5)
+  schedule_pos    Int
+  active          Boolean
+
+  User User[]
+
+  conf    Conference @relation(fields: [conf_id], references: [id])
+  conf_id Int
+
+  Presentation Presentation[]
+  Comment      Comment[]
+  Showcase     Showcase[]
+}
+
+model Presentation {
+  id Int @id @default(autoincrement())
+
+  storage_type String
+  path         String
+  is_approved  Boolean
+
+  project    Project @relation(fields: [project_id], references: [id])
+  project_id Int
+}
+
+model Conference {
+  id Int @id @default(autoincrement())
+
+  name           String
+  datetime_start DateTime
+  Project        Project[]
+  Break          Break[]
+}
+
+model Break {
+  id Int @id @default(autoincrement())
+
+  time         Int @default(5)
+  schedule_pos Int
+
+  conf    Conference @relation(fields: [conf_id], references: [id])
+  conf_id Int
+}
+
+model Comment {
+  id Int @id @default(autoincrement())
+
+  project    Project @relation(fields: [project_id], references: [id])
+  project_id Int
+
+  name_of_sender String
+  text           String
+}
+
+model Showcase {
+  id Int @id @default(autoincrement())
+
+  project    Project @relation(fields: [project_id], references: [id])
+  project_id Int
+}
