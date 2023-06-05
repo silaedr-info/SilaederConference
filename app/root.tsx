@@ -1,31 +1,34 @@
+import type { V2_MetaFunction } from '@remix-run/node';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
-import { MantineProvider, createEmotionCache } from '@mantine/core';
+import { MantineProvider, createEmotionCache, AppShell } from '@mantine/core';
 import { StylesPlaceholder } from '@mantine/remix';
+import { HeaderResponsive } from "~/header";
+import { FooterCentered } from "~/footer";
+
+export const meta: V2_MetaFunction = () => (
+    [
+      {name: "viewport", content: "width=device-width, initial-scale=1, shrink-to-fit=no"},
+      {title: "Silaeder Conference"},
+    ]
+);
+
 
 createEmotionCache({ key: 'mantine' });
 
 export default function App() {
+    const header = (
+        <HeaderResponsive links={[
+            {label: "Авторизация", link: '/auth'},
+            {label: "Витрина проектов", link: '/showcase'},
+            {label: "Расписание конференции", link: '/schedule'},
+        ]} />
+    );
+    const footer = (
+        <FooterCentered />
+    );
   return (
       <MantineProvider theme={{
-        colorScheme: 'dark',
-        colors: {
-          // Add your color
-          deepBlue: ['#E9EDFC', '#C1CCF6', '#99ABF0' /* ... */],
-          // or replace default theme color
-          blue: ['#E9EDFC', '#C1CCF6', '#99ABF0' /* ... */],
-        },
-
-        shadows: {
-          md: '1px 1px 3px rgba(0, 0, 0, .25)',
-          xl: '5px 5px 3px rgba(0, 0, 0, .25)',
-        },
-
-        headings: {
-          fontFamily: 'Roboto, sans-serif',
-          sizes: {
-            h1: { fontSize: '2rem' },
-          },
-        },
+        colorScheme: 'light',
       }} withGlobalStyles withNormalizeCSS>
         <html lang="en">
         <head>
@@ -34,10 +37,17 @@ export default function App() {
           <Links />
         </head>
         <body>
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
+        <AppShell
+            padding="md"
+            header={header}
+            footer={footer}
+            sx={{backgroundColor: '#f1f3f5'}}
+        >
+            <Outlet />
+            <ScrollRestoration />
+            <Scripts />
+            <LiveReload />
+        </AppShell>
         </body>
         </html>
       </MantineProvider>
