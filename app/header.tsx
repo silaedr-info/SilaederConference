@@ -9,12 +9,12 @@ import {
     Paper,
     Transition,
     rem,
-    Badge,
-    Image,
+    ActionIcon,
+    useMantineColorScheme,
+    useMantineTheme
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { IconLogout, IconArrowsLeftRight } from "@tabler/icons-react";
-import Logo from "~/logo.svg"
+import { IconLogout, IconArrowsLeftRight, IconSun, IconMoonStars } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
     dropdown: {
@@ -77,6 +77,8 @@ interface HeaderResponsiveProps {
 }
 
 export function HeaderResponsive({ links }: HeaderResponsiveProps) {
+    const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+    const theme = useMantineTheme();
     const { classes } = useStyles();
     const [opened, { toggle }] = useDisclosure(false);
 
@@ -96,14 +98,29 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
             <Container className={classes.inner} fluid>
                 <Group>
                     <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
-                    <Image width={250} src={Logo} alt="logo" />
+                    <h3>Silaeder Conference</h3>
                 </Group>
 
                 <Group>
                     <Group spacing={5} className={classes.links}>
                         {linkItems}
                     </Group>
+
                     <Menu shadow="md" width={200} transitionProps={{ transition: 'rotate-left', duration: 250 }}>
+                        <Group position="center" my="xl">
+                            <ActionIcon
+                                onClick={() => toggleColorScheme()}
+                                size="lg"
+                                sx={(theme) => ({
+                                    backgroundColor:
+                                        theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+                                    color: theme.colors.blue[6],
+                                })}
+                            >
+                                {theme.colorScheme === 'dark' && <IconSun size="1.2rem" />}
+                                {theme.colorScheme === 'light' && <IconMoonStars size="1.2rem" />}
+                            </ActionIcon>
+                        </Group>
                         <Menu.Target>
                             <Avatar src={null} alt="no image here" color="indigo" radius="lg" />
                         </Menu.Target>
