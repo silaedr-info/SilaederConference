@@ -1,9 +1,10 @@
 import type { V2_MetaFunction } from '@remix-run/node';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
-import { MantineProvider, createEmotionCache, AppShell } from '@mantine/core';
+import { MantineProvider, createEmotionCache, AppShell, ColorSchemeProvider, ColorScheme } from '@mantine/core';
 import { StylesPlaceholder } from '@mantine/remix';
 import { HeaderResponsive } from "~/header";
 import { FooterCentered } from "~/footer";
+import { useState } from 'react';
 
 export const meta: V2_MetaFunction = () => (
     [
@@ -26,10 +27,12 @@ export default function App() {
     const footer = (
         <FooterCentered />
     );
+    const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
+    const toggleColorScheme = (value?: ColorScheme) =>
+        setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
   return (
-      <MantineProvider theme={{
-        colorScheme: 'light',
-      }} withGlobalStyles withNormalizeCSS>
+      <ColorSchemeProvider colorScheme='light' toggleColorScheme={toggleColorScheme}>
+        <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
         <html lang="en">
         <head>
           <StylesPlaceholder />
@@ -41,7 +44,7 @@ export default function App() {
             padding="md"
             header={header}
             footer={footer}
-            sx={{backgroundColor: '#f1f3f5'}}
+            //sx={{backgroundColor: '#f1f3f5'}}
         >
             <Outlet />
             <ScrollRestoration />
@@ -50,6 +53,7 @@ export default function App() {
         </AppShell>
         </body>
         </html>
-      </MantineProvider>
+        </MantineProvider>
+      </ColorSchemeProvider>
   );
 }
