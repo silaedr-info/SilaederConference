@@ -36,7 +36,7 @@ export default function () {
                 <Button fullWidth mt="xl">
                     Войти
                 </Button>
-                <Button fullWidth mt="xl" variant="outline">
+                <Button fullWidth mt="xl" onCLick={ navigate('/showcase') } variant="outline">
                     Продолжить как гость
                 </Button>
             </Paper>
