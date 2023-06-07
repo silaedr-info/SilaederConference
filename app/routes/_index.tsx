@@ -53,7 +53,7 @@ export default function () {
                 <Divider orientation="vertical"/>
                 <Container sx={{width: '30%'}}>
                     <SimpleGrid cols={1} spacing="xs" verticalSpacing="xs">
-                    <ProjectCard name='Проект 1' description='проект 1.' projectId={0} section="математика" editFunc={(id: number) => {open(); setCurrentProject(id)}} />
+                    <ProjectCard name='Проект 1' description='проект 1.' projectId={0} section="математика"  editFunc={(id: number) => {open(); setCurrentProject(id)}} />
                     <ProjectCard name='Проект 2' description='проект 2.' projectId={1} section="биология" editFunc={(id: number) => {open(); setCurrentProject(id)}} />
                     <ProjectCard name='Проект 3' description='проект 3.' projectId={2} section="программирование" editFunc={(id: number) => {open(); setCurrentProject(id)}} />
                     </SimpleGrid>

@@ -33,7 +33,7 @@ export default function () {
                             Введите вашу почту, указанную в таблице Силаэдра
                         </Text>
                         <TextInput label="Эл. почта" placeholder="jhondoe@example.com" required onChange={handleChangeEmail} />
-                        <Button fullWidth mt="xl" onClick={() => {
+                        <Button fullWidth mt="xl" color={"indigo.4"} onClick={() => {
                             setStage(1);
                         }}>
                             Далее
@@ -48,7 +48,7 @@ export default function () {
                             вкладку "спам"
                         </Text>
                         <PinInput type="number" onChange={handleChangeCode} sx={{paddingTop: rem(10)}}/>
-                        <Button fullWidth mt="xl" onClick={() => {
+                        <Button fullWidth mt="xl" color={"indigo.4"} onClick={() => {
                             setStage(2)
                         }}>
                             Далее
@@ -67,9 +67,9 @@ export default function () {
                         />
                         <PasswordInput
                             placeholder="Password"
-                            label="Повторите пароль пароль"
+                            label="Повторите пароль"
                         />
-                        <Button fullWidth mt="xl" onClick={() => {
+                        <Button fullWidth mt="xl" color={"indigo.4"} onClick={() => {
                             setStage(2)
                         }}>
                             Подтвердить
