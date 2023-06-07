@@ -6,13 +6,23 @@ import {
     Title,
     Text,
     Container,
-    Button
+    Button,
+    Checkbox,
+    Space,
+    MultiSelect,
+    Box,
+    CloseButton,
+    SelectItemProps,
+    MultiSelectValueProps,
+    rem,
+    Flex,
 } from '@mantine/core';
 import { useNavigate } from "react-router-dom";
+import { forwardRef } from 'react';
+
 
 
 export default function () {
-    const navigate = useNavigate();
     return (
         <Container size={420} my={40}>
             <Title
@@ -28,6 +38,10 @@ export default function () {
             <Paper withBorder shadow="md" p={30} mt={30} radius="md">
                 <TextInput label="Эл. почта" placeholder="jhondoe@example.com" required />
                 <PasswordInput label="Пароль" placeholder="Password" required mt="md" />
+                <Space h="lg" />
+                <Checkbox
+                    label="Я согласен на обработку персональных данных"
+                />
                 <Anchor component="button" size="sm" align="right">
                     <a href="/forgot-password" style={{textDecoration: 'none', color: "#228be6"}}>
                         Забыли пароль?

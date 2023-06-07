@@ -106,7 +106,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
                         {linkItems}
                     </Group>
 
-                    <Menu shadow="md" width={200} transitionProps={{ transition: 'rotate-left', duration: 250 }}>
+                    <Menu shadow="md" width={200} transitionProps={{ transition: 'pop', duration: 250 }}>
                         <Group position="center" my="xl">
                             <ActionIcon
                                 onClick={() => toggleColorScheme()}
