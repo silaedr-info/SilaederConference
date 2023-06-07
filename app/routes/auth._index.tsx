@@ -10,6 +10,8 @@ import {
 } from '@mantine/core';
 import { useNavigate } from "react-router-dom";
 
+export const token = 0;
+
 
 export default function () {
     const navigate = useNavigate();

@@ -45,11 +45,12 @@ model Project {
   User User[]
 
   conf    Conference @relation(fields: [conf_id], references: [id])
-  conf_id Int
+  conf_id Int        @unique
 
-  Presentation Presentation[]
-  Comment      Comment[]
-  Showcase     Showcase[]
+  presentation    Presentation @relation(fields: [presentation_id], references: [id])
+  presentation_id Int          @unique
+  Comment         Comment[]
+  Showcase        Showcase[]
 }
 
 model Presentation {
@@ -59,8 +60,7 @@ model Presentation {
   path         String
   is_approved  Boolean
 
-  project    Project @relation(fields: [project_id], references: [id])
-  project_id Int
+  project Project?
 }
 
 model Conference {
